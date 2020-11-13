@@ -11,13 +11,32 @@ sp.trace = False
 
 df = pd.read_csv('Lofi_features.csv')
 
-df["Song Name"] = df["id"].apply(lambda x: (sp.track(x))["name"])
+song_names = []
+artist_names = []
+album_genre = []
+i = 1
+for track in df["id"]:
+    song_names.append((sp.track(track))["name"])
+    artist_names.append(sp.track(track)["artists"][0]["name"])
+    album_genre.append(sp.artist(sp.track(track)["album"]["id"]))
+    print("Iteration", i)
+    i += 1
 
 columns = list(df.columns)
 columns = [columns[-1]] + columns[:-1]
 df = df[columns]
 
 df.drop(["type", "id", "uri", "track_href", "analysis_url"], axis = 1, inplace = True)
+
+df["Song Name"] = song_names
+df["Artist Names"] = artist_names
+df["Artist Genre"] = artist_genre
+
+columns = ["Song Name", "Artist Names", "Artist Genre", "danceability", "energy", "key", "loudness", 
+           "mode", "speechiness", "acousticness", "instrumentalness", "liveness", "valence", "tempo",
+           "duration_ms", "time_signature"]
+
+df = df[columns] 
 
 df.to_csv("Lofi_features.csv", index = False)
 
