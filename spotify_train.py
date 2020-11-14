@@ -12,15 +12,23 @@ sp.trace = False
 ids = []
 features_list = []
 
-def get_playlist_tracks(username,playlist_id):
-    results = sp.user_playlist_tracks(username,playlist_id)
-    tracks = results['items']
-    while results['next']:
-        results = sp.next(results)
-        tracks.extend(results['items'])
-    return tracks
+# def get_playlist_tracks(username,playlist_id):
+#     results = sp.user_playlist_tracks(username,playlist_id)
+#     tracks = results['items']
+#     while results['next']:
+#         results = sp.next(results)
+#         tracks.extend(results['items'])
+#     return tracks
+    
+# playlist = get_playlist_tracks("1246062693","4U5UE0E4GFdFj9e6JeSPNI")
 
-playlist = get_playlist_tracks("1246062693","4U5UE0E4GFdFj9e6JeSPNI")
+print("Fetching playlist...")
+
+results = sp.user_playlist_tracks("1246062693","4U5UE0E4GFdFj9e6JeSPNI")
+playlist = results['items']
+while results['next']:
+    results = sp.next(results)
+    playlist.extend(results['items'])
 
 
 for track in playlist:

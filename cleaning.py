@@ -13,12 +13,12 @@ df = pd.read_csv('Lofi_features.csv')
 
 song_names = []
 artist_names = []
-album_genre = []
+artist_genre = []
 i = 1
 for track in df["id"]:
     song_names.append((sp.track(track))["name"])
     artist_names.append(sp.track(track)["artists"][0]["name"])
-    album_genre.append(sp.artist(sp.track(track)["album"]["id"]))
+    artist_genre.append(sp.artist(sp.track(track)["artists"][0]["id"])["genres"])
     print("Iteration", i)
     i += 1
 
@@ -31,12 +31,17 @@ df.drop(["type", "id", "uri", "track_href", "analysis_url"], axis = 1, inplace =
 df["Song Name"] = song_names
 df["Artist Names"] = artist_names
 df["Artist Genre"] = artist_genre
+# df["Artist Genre"] = df["Artist Genre"].apply(eval)
 
-columns = ["Song Name", "Artist Names", "Artist Genre", "danceability", "energy", "key", "loudness", 
+lofi = [True if ('chillhop' in genre_list or 'lo-fi beats' in genre_list or 'japanese chillhop' in genre_list) else False for genre_list in df["Artist Genre"]]
+
+df["Is Lofi?"] = lofi
+
+columns = ["Song Name", "Artist Names", "Artist Genre", "Is Lofi?", "danceability", "energy", "key", "loudness", 
            "mode", "speechiness", "acousticness", "instrumentalness", "liveness", "valence", "tempo",
            "duration_ms", "time_signature"]
 
-df = df[columns] 
+df = df[columns]
 
 df.to_csv("Lofi_features.csv", index = False)
 
