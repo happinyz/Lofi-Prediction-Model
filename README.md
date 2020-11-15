@@ -50,7 +50,7 @@ During the EDA, I took a look at the distributions of the predictors and the val
 ## Model Building
 I split the dataset into training and testing sets with a test size of 20%. I decided to just use a logistic regression model since I had many predictors (audio features) and one qualitative response variable (Is the artist part of the lofi genre?). 
 
-After running the model on the test set, I found that my model had an accuracy of **83.67%**
+After running the model on the test set, I found that my model had an accuracy of **83.67%**.
 
 ## Productionization
 Using the tutorial listed above, I created a flask API endpoint that takes in a request with a list of values corresponding to the relevant track audio features and returns a prediction of whether or not the song's artist is part of the lofi genre. The endpoint was hosted on a local webserver.
