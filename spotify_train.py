@@ -12,17 +12,9 @@ sp.trace = False
 ids = []
 features_list = []
 
-# def get_playlist_tracks(username,playlist_id):
-#     results = sp.user_playlist_tracks(username,playlist_id)
-#     tracks = results['items']
-#     while results['next']:
-#         results = sp.next(results)
-#         tracks.extend(results['items'])
-#     return tracks
-    
-# playlist = get_playlist_tracks("1246062693","4U5UE0E4GFdFj9e6JeSPNI")
-
 print("Fetching playlist...")
+
+# Get all the tracks in our desired playlist
 
 results = sp.user_playlist_tracks("1246062693","4U5UE0E4GFdFj9e6JeSPNI")
 playlist = results['items']
@@ -30,9 +22,10 @@ while results['next']:
     results = sp.next(results)
     playlist.extend(results['items'])
 
-
 for track in playlist:
     ids.append(track["track"]["id"])
+
+# Split our dataset into chunks to avoid errors involving too many API requests
 
 chunks = [ids[x:x+100] for x in range(0, len(ids), 100)]
 
