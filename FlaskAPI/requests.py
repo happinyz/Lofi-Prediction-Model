@@ -4,7 +4,7 @@ import requests
 
 URL = 'http://127.0.0.1:5000/predict'
 headers = {"Content-Type": "application/json"}
-data = {'input': [0.49, 0.715, -5.549, 1.0, 0.0476, 0.386, 0.0, 0.311, 0.866, 130.726]}
+data = {'input': [0.807,0.576,-10.158,0,0.296,0.0419,0.931,0.116,0.771,169.999]}
 
 r = requests.get(URL, headers = headers, json=data)
 
