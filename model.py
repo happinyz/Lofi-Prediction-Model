@@ -1,12 +1,10 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score
-from sklearn.ensemble import RandomForestRegressor
-from sklearn import metrics
 import statsmodels.api as sm
+import pickle 
 
 df = pd.read_csv("Lofi_features.csv")
 
@@ -29,5 +27,24 @@ model.fit().summary()
 
 lm = LogisticRegression(max_iter = 1000)
 lm.fit(x_train, y_train)
+threshold = 0.5
+
+lm.predict(x_test)
+
 cross_lm = cross_val_score(lm, x_train, y_train, cv=10, scoring='accuracy')
-print(np.mean(cross_lm))
+print("Cross Validation Accuracy Score:", np.mean(cross_lm))
+
+score = lm.score(x_test, y_test)
+print("Test accuracy score:", score)
+
+pickl = {'model': lm}
+pickle.dump(pickl, open('model_file' + '.pickle', "wb"))
+
+file_name = 'model_file.pickle'
+with open(file_name, 'rb') as pickled:
+    data = pickle.load(pickled)
+    model = data['model']
+
+model.predict(x_test.iloc[1,:].values.reshape(1,-1))
+
+list(x_test.iloc[1,:])
