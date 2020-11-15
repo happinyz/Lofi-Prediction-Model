@@ -9,7 +9,6 @@
 - I have considered the following genres to be lofi: **chillhop, lo-fi beats, japanese chillhop**
 - My response variable is whether or not a track's artist was part of the lofi genre. My explanatory variables were the various track audio features.
 
-
 ## Code and Resources Used
 **Python Version**: 3.7.9
 
