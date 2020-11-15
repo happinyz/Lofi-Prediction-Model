@@ -46,6 +46,12 @@ After getting the initial data from the Spotify API, I needed to clean a few par
 ## Exploratory Data Analysis
 During the EDA, I took a look at the distributions of the predictors and the value counts for the different genres present in my model playlist. Here are some highlights!
 
+![Barplot of the different genres in my dataset](https://github.com/happinyz/Lofi-Prediction-Model/blob/master/Images/lofi-barplot.png)
+
+![Descriptive stats of tracks that had artists in the lofi genre](https://github.com/happinyz/Lofi-Prediction-Model/blob/master/Images/lofi-desc.png)
+
+![Heatmap and visualization of audio features correlation in lofi genres](https://github.com/happinyz/Lofi-Prediction-Model/blob/master/Images/lofi-heatmap.png)
+
 ## Model Building
 I split the dataset into training and testing sets with a test size of 20%. I decided to just use a logistic regression model since I had many predictors (audio features) and one qualitative response variable (Is the artist part of the lofi genre?). 
 
