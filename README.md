@@ -1,10 +1,12 @@
 # Lofi Genre Predictor
-- Developed a tool that predicts if a certain track on Spotify is part of the lofi genre.
+- Developed a tool that predicts if a certain track's author on Spotify is part of the lofi genre.
 - Analyzed over 2500 songs of various genres on Spotify, taken from Spotify's numerous genre-specific playlists.
 - Used [track audio features](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/) provided by Spotify API as predictors; fit using logistic regression models.
 - Built a client facing API using flask
 
-## Defining the Lofi Genre
+## Important Things to Know
+- I originally began this project to predict if a specific track would be part of the lofi genre. However, Spotify tracks do not have genre attached to them. Genres are only attached to albums and artists. I settled with predicting artist genre instead.
+- Lofi
 
 
 ## Code and Resources Used
@@ -38,3 +40,5 @@ After getting the initial data from the Spotify API, I needed to clean a few par
 - Added a field for artist genre (taken via Spotify API)
 - Parsed lists containing genres from artist genres
 - Added a field for if a track's artist is affiliated with the lofi genre
+
+## Exploratory Data Analysis
