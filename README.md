@@ -52,3 +52,6 @@ After running the model on the test set, I found that my model had an accuracy o
 
 ## Productionization
 Using the tutorial listed above, I created a flask API endpoint that takes in a request with a list of values corresponding to the relevant track audio features and returns a prediction of whether or not the song's artist is part of the lofi genre. The endpoint was hosted on a local webserver.
+
+## Expanding and Improving on the Project
+I would love to continue this project further by refining the model to give a prediction for what genre the song's artist is a part of, rather than if the artist is part of just the lofi genre. I'd also like to test out different models and see if there are any approaches that are more accurate.
