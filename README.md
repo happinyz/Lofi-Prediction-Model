@@ -3,3 +3,4 @@ Analyzing over a thousand songs of various genres on Spotify to predict if a son
 
 ## Resources
 https://opendatascience.com/a-machine-learning-deep-dive-into-my-spotify-data/
+https://towardsdatascience.com/productionize-a-machine-learning-model-with-flask-and-heroku-8201260503d2
