@@ -17,6 +17,8 @@
 
 **Web Framework Requirements**: `pip install -r requirements.txt`
 
+**Configuration**: A `config.py` file is needed in the project directory, and must contain a client ID `CID` and a client secret `SECRET`. This is necessary for the Spotify API. You can obtain these keys by following the [Spotify API Authorization Guide](https://developer.spotify.com/documentation/general/guides/authorization-guide/).
+
 **Inspiration and Data Preparation Article**: https://opendatascience.com/a-machine-learning-deep-dive-into-my-spotify-data/
 
 **Flask Productionization**: https://towardsdatascience.com/productionize-a-machine-learning-model-with-flask-and-heroku-8201260503d2
