@@ -8,14 +8,15 @@ import pickle
 
 df = pd.read_csv("Lofi_features.csv")
 
-# choose relevant columns
+# Choose the relevant fields that we will use for the model
+# In this case, it would be a song's primary features
 df.columns
 df_model = df[["Is Lofi?","danceability", "energy", "loudness", "mode", "speechiness", "acousticness", "instrumentalness", "liveness", "valence", "tempo"]]
 
-# get dummy data
+# Get dummy data
 df_dum = pd.get_dummies(df_model)
 
-# train test split
+# Split our dataset into a training set and testing set
 x = df_dum.drop('Is Lofi?', axis = 1)
 y = df_dum['Is Lofi?'].values
 
@@ -30,6 +31,8 @@ lm.fit(x_train, y_train)
 threshold = 0.5
 
 lm.predict(x_test)
+
+# Testing model accuracy
 
 cross_lm = cross_val_score(lm, x_train, y_train, cv=10, scoring='accuracy')
 print("Cross Validation Accuracy Score:", np.mean(cross_lm))
@@ -47,4 +50,3 @@ with open(file_name, 'rb') as pickled:
 
 model.predict(x_test.iloc[1,:].values.reshape(1,-1))
 
-list(x_test.iloc[1,:])

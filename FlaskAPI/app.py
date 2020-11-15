@@ -4,6 +4,7 @@ import json
 import pickle
 import numpy as np
 
+# Load our model file
 def load_models():
     file_name = "models/model_file.pickle"
     with open(file_name, 'rb') as pickled:
@@ -11,6 +12,7 @@ def load_models():
         model = data['model']
     return model
 
+# API request endpoint
 app = Flask(__name__)
 @app.route('/predict', methods=['GET'])
 def predict():
@@ -27,7 +29,3 @@ def predict():
 if __name__ == '__main__':
     application.run(debug=True)
 
-
-
-
-# [0.49, 0.715, -5.549, 1.0, 0.0476, 0.386, 0.0, 0.311, 0.866, 130.726]
